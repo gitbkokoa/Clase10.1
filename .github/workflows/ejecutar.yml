@@ -1,1 +1,38 @@
+# .github/workflows/ejecutar.yml
+
+# Nombre del flujo de trabajo que se mostrará en la pestaña "Actions" de GitHub
+name: Flujo de trabajo de ejemplo
+
+# Define los eventos que activarán este flujo de trabajo
+on:
+  # Se activa cuando se hace un push a la rama "main"
+  push:
+    branches: [ main ]
+  # Se activa cuando se abre o actualiza un pull request dirigido a la rama "main"
+  pull_request:
+    branches: [ main ]
+
+# Define los trabajos que se ejecutarán como parte del flujo de trabajo
+jobs:
+  # Define un trabajo llamado "build"
+  build:
+    # El tipo de máquina virtual en la que se ejecutará el trabajo
+    runs-on: ubuntu-latest
+
+    # Los pasos que componen el trabajo
+    steps:
+      # 1. Clona tu repositorio en el ejecutor para que el trabajo pueda acceder a tu código
+      - name: Clonar el repositorio
+        uses: actions/checkout@v4
+
+      # 2. Ejecuta un comando de shell simple
+      - name: Ejecutar un script de un solo comando
+        run: echo "¡Hola, mundo!"
+
+      # 3. Ejecuta múltiples comandos de shell
+      - name: Ejecutar un script de múltiples comandos
+        run: |
+          echo "Este es un paso con múltiples líneas."
+          echo "Se pueden añadir tantos comandos como sea necesario."
+
 
